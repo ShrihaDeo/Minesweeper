@@ -91,10 +91,10 @@ def on_button_click(root, row, col):
                    
 
 # Function to check if the player has won
-def check_win():
-    total_cells = ROWS * COLS
-    total_non_mine_cells = total_cells - len(mines)  # Total cells minus the number of mines
-    return revealed_cells == total_non_mine_cells  # Player wins if all non-mine cells are revealed
+# def check_win():
+#    total_cells = ROWS * COLS
+#    total_non_mine_cells = total_cells - len(mines)  # Total cells minus the number of mines
+#    return revealed_cells == total_non_mine_cells  # Player wins if all non-mine cells are revealed
 
 # Function to reveal a cell and disable the button
 def reveal_cell(root, row, col):
@@ -120,11 +120,11 @@ def reveal_cell(root, row, col):
     revealed_cells += 1
 
     # Check if the player has won
-    if check_win():
-        win_sound.play()  # Play click sound
-        messagebox.showinfo("You Win!", "Congratulations, You Just Won The Game! You Deserve a Cookie :D")
-        revealed_cells = 0
-        new_file()  # Start a new game
+    #if check_win():
+    #    win_sound.play()  # Play click sound
+    #    messagebox.showinfo("You Win!", "Congratulations, You Just Won The Game! You Deserve a Cookie :D")
+    #    revealed_cells = 0
+    #    new_file()  # Start a new game
 
     # If no mines surround this cell, recursively reveal neighbors (if desired)
     if surrounding_mines == 0:
@@ -179,12 +179,11 @@ def create_menu(root):
     file_menu = tk.Menu(menu_bar, tearoff=0)
     file_menu.add_command(label="New", command=new_file)
     file_menu.add_separator()
-    file_menu.add_command(label="Exit", command=exit_app)
     menu_bar.add_cascade(label="File", menu=file_menu)
 
     # Create the "Help" menu
     help_menu = tk.Menu(menu_bar, tearoff=0)
-    help_menu.add_command(label="About", command=lambda: messagebox.showinfo("About", "A Simple Minesweeper game developed by Shriha Deo. This is still under constructor with aims to implement unique features compared to the normal minesweeper. Enjoy :)"))
+    help_menu.add_command(label="About", command=lambda: messagebox.showinfo("About", "This is a simple minesweeper game which is still under constructor with aims to implement unique features compared to the normal minesweeper.\nClick on the pink boxes carefully and avoid mines to win!\nTo flag a box, press the space bar. Enjoy!"))
     menu_bar.add_cascade(label="Help", menu=help_menu)
 
     root.config(menu=menu_bar)
